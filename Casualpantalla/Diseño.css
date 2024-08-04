@@ -1,0 +1,258 @@
+/* Estilos globales para el cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Color de fondo */
+}
+
+/* Estilos para el encabezado */
+header {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Ajusta la altura según lo necesario */
+    overflow: hidden;
+    margin: 20px; /* Añadir márgenes para despejar el header de las orillas */
+    border-radius: 50px; /* Ajustar el border-radius */
+    box-sizing: border-box; /* Para incluir padding en el cálculo del ancho total */
+    width: calc(100% - 40px); /* Ajustar el ancho para tener en cuenta los márgenes */
+    position: relative;
+    width: 98%;
+    height: 300px; /* Ajusta la altura según sea necesario */
+    overflow: hidden;
+}
+
+video#myVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.header-logo {
+    margin-bottom: 10px; /* Espacio entre el logo y los botones */
+    display: flex;
+    justify-content: center;
+}
+
+.header-logo .Logo-button img {
+    height: 60px; /* Ajusta el tamaño del logo */
+}
+
+.header-explore {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espacio entre los botones */
+}
+
+.header-explore a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.header-explore span {
+    margin-right: 5px;
+}
+
+/* Estilos para el contenedor de texto */
+.Teniscontenedor {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilos para la galería */
+.header-explore {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.header-explore a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.header-explore span {
+    margin-right: 5px;
+}
+
+/* Estilos para el contenedor de texto */
+.Teniscontenedor {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilos para la galería */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto;
+    gap: 10px;
+    max-width: 60%; /* Ajusta según tus necesidades */
+}
+
+.gallery-item {
+    width: 300px; /* Ajusta según tus necesidades */
+    margin-bottom: 10px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+/* Estilos para batones */
+
+.Login-button{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000; /* Color del texto */
+    padding: 8px 9px;
+    border: 2px solid #fff; /* Color del borde */
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 10px;
+    background-color: burlywood;
+}
+
+.Login-button span {
+    margin-right: 10px;
+}
+
+.Login-button svg {
+    width: 10px;
+    height: 10px;
+    fill: currentColor;
+}
+
+.Login-button:hover {
+    background-color: #BBBBBB; /* Color de fondo al pasar el cursor */
+    color: #fff; /* Color del texto al pasar el cursor */
+}
+
+.Login-button:active {
+    background-color: #555; /* Color de fondo al hacer clic */
+}
+
+.new-button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000; /* Color del texto */
+    padding: 8px 9px;
+    border: 2px solid #fff; /* Color del borde */
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 10px;
+    background-color:#021526;
+}
+
+.new-button span {
+    margin-right: 10px;
+}
+
+.new-button svg {
+    width: 10px;
+    height: 10px;
+    fill: currentColor;
+}
+
+.new-button:hover {
+    background-color: #BBBBBB; /* Color de fondo al pasar el cursor */
+    color: #fff; /* Color del texto al pasar el cursor */
+}
+
+.new-button:active {
+    background-color: #555; /* Color de fondo al hacer clic */
+}
+
+.gallery-item {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .background-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  .favorite-button, .download-button {
+    position: absolute;
+    bottom: 10px; /* Ajusta la posición del botón según tu preferencia */
+    right: 180px;  /* Ajusta la posición del botón según tu preferencia */
+    background-color: #FFD700; /* Color del botón */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    opacity: 0; /* Oculta el botón inicialmente */
+    transition: opacity 0.3s ease; /* Transición suave para la aparición */
+    z-index: 1; /* Asegúrate de que el botón esté sobre la imagen */
+  }
+
+  .favorite-button {
+    bottom: 10px;
+    right: 10px;
+    background-color: transparent /* Color del botón de favoritos */
+  }
+
+  .download-button {
+    top: 10px;
+    left: 10px;
+    background-color: rgb(164, 174, 202);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 50px; /* Ajusta el ancho del botón */
+    height: 20px; /* Ajusta el alto del botón */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el texto dentro del botón */
+    font-size: 14px; /* Ajusta el tamaño del texto */
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+  
+  .gallery-item:hover .favorite-button,
+  .gallery-item:hover .download-button {
+    opacity: 1; /* Muestra los botones al pasar el cursor sobre la imagen */
+  }
+  
+  .gallery-item:hover .favorite-button {
+    opacity: 1; /* Muestra el botón al pasar el cursor sobre la imagen */
+  }
