@@ -15,7 +15,7 @@ server.use(bodyParser.json());
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'Alonso.12vz',
     database: 'Av_image'
 });
 
@@ -30,7 +30,7 @@ server.get("/casual",(req,res)=>res.sendFile(_dirname+"/Casualpantalla/Casual.ht
 server.get("/fav",(req,res)=>res.sendFile(_dirname+"/Favoritos/Fav.html"))
 server.get("/sIn",(req,res)=>res.sendFile(_dirname+"/Login/Login.html"))
 server.get("/sUp",(req,res)=>res.sendFile(_dirname+"/Registrarse/Registro.html"))
-
+server.get("/us",(req,res)=>res.sendFile(_dirname+"/Usuarios-pag/users.html"))
 
 db.connect(err => {
     if (err) {

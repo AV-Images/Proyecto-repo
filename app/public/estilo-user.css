@@ -1,0 +1,19 @@
+.Botoncito {
+    position: relative;
+    display: inline-block;
+}
+
+#fileInput {
+    display: none;
+}
+
+#imagePreview {
+    display: none;
+    width: 200px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.bi {
+    margin-left: 5px;
+}
