@@ -9,7 +9,8 @@ window.onload = function() {
 };
 
 function addToFavorites(imageSrc) {
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    console.log(imageSrc);
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
     if (!favorites.includes(imageSrc)) {
         favorites.push(imageSrc);
         localStorage.setItem('favorites', JSON.stringify(favorites));

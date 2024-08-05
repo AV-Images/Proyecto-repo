@@ -21,11 +21,11 @@
                 });
 
                 // Iniciar Masonry después de cargar las imágenes
-                var msnry = new Masonry(gallery, {
-                    itemSelector: '.gallery-item',
-                    columnWidth: '.gallery-item',
-                    percentPosition: true
-                });
+                //var msnry = new Masonry(gallery, {
+                //    itemSelector: '.gallery-item',
+                //    columnWidth: '.gallery-item',
+                //    percentPosition: true
+                //});
             }
         };
 
