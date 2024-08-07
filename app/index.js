@@ -111,24 +111,45 @@ server.post('/upload', upload.single('imagenes'),(req, res) => {
         const tipo=req.file.mimetype;
         const img=req.file.buffer;
         const gal=req.body.galeria;
-        const insert="insert into imagenes(nombre, tipo_dato, galeria, datos) values (?,?,?,?)";
-        db.query(insert,[nombre,tipo,gal,img], (err,data)=>{
-            if(err){
-                return res.send({status:'400',message:'No se pudo insertar la imagen'})
-            }else{
-                console.log('Archivos subidos exitosamente');
-            }
-        })
+        if(gal==1){
+            const insert="insert into imagenes_Carros(nombre, tipo_dato, datos) values (?,?,?)";
+            db.query(insert,[nombre,tipo,img], (err,data)=>{
+                if(err){
+                    return res.send({status:'400',message:'No se pudo insertar la imagen'})
+                }else{
+                    console.log('Archivos subidos exitosamente');
+                    return res.status(200).redirect('/us')
+                }
+            })
+        }
+        if(gal==2){
+            const insert="insert into imagenes_Casual(nombre, tipo_dato, datos) values (?,?,?)";
+            db.query(insert,[nombre,tipo,img], (err,data)=>{
+                if(err){
+                    return res.send({status:'400',message:'No se pudo insertar la imagen'})
+                }else{
+                    console.log('Archivos subidos exitosamente');
+                    return res.status(200).redirect('/us')
+                }
+            })
+        }
     } catch (error) {
         console.error(error);
         res.send({message:'Error al subir la imagen',redirect:"/us"});
     }
 });
 
-server.post("/getImgCarros",(req,res)=>{
-    //console.log('xd')
-    db.query('select * from imagenes where galeria=1',(err,data)=>{
-        //console.log(data);
+server.post('/longCarr',(req,res)=>{
+    db.query('select count(id_image) as largo from imagenes',(err,data)=>{
+        res.send(data);
+    })
+})
+
+server.get("/getImgCarros",(req,res)=>{
+    const id=req.query.id
+    console.log(req.query.id)
+    db.query('select * from imagenes_Carros where id_image='+id,(err,data)=>{
+        console.log(err);
         console.log('negros')
         res.setHeader('Content-Type',data[0].tipo_dato);
         res.send(data[0].datos)
