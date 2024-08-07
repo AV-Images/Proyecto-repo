@@ -1,16 +1,32 @@
 document.addEventListener('DOMContentLoaded',async ()=>{
     const longitud=await fetch('http://localhost:3501/longCarr',{
-        method:"POST"
+        method:"POST",
+        headers:{
+            "Content-Type" : "application/json"
+        },
+        body:JSON.stringify({
+            tabla:1
+        })
+
     })
     const res=await longitud.json();
-    console.log(res[0].largo);
-    console.log('pum')
-    console.log(imagenes)
-    const divImg=document.getElementById('imagenes')
-    //console.log(imagenes[0]);
-    const img=document.createElement('img')
-    img.src='/getImgCarros/id='+1;
-    divImg.appendChild(img);
+    const le=res[0].largo
+
+    //Meter las imagenes
+    const Cont_Img=document.getElementById('gallery')
+
+    for(let i=0;i<le;i++){
+
+        const div_img=document.createElement('div');
+        div_img.className='gallery-item';
+
+        const img=document.createElement('img')
+        img.src='/getImgCarros?id='+1;
+        divImg.appendChild(img);
+
+        const boton=document.createElement('button');
+        
+    }
 })
 
 function addToFavorites(imageSrc) {

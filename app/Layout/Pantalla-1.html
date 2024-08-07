@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <body>
         <head>
             <link rel="stylesheet" href="Layout.css">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>New-launches</title>
-            <script src="Layout.js"></script>
         </head>
-
+        <body>
         <header>
             
             <div class="header-logo">
@@ -45,9 +43,7 @@
             <p>AV no solo brinda imagenes de casuales, tambien brinda fotografias de carros exoticos</p>
             <p>Brindando un espacio, para que los fotografos puedan expresarse</p>
         </div>
-
-        <body>
-            <div class="gallery">
+            <div class="gallery" id="gallery">
 
                 <div class="gallery-item">
                     <img src="Mclaren.jpg" alt="Descripción de la imagen 1" class="background-image">
@@ -159,11 +155,10 @@
                     <button class="favorite-button" onclick="addToFavorites('maxime-renard-Li155fhUDP4-unsplash.jpg')">Agregar a Favoritos</button>
                 </div>
                 <!-- Añadir más imágenes según sea necesario -->
+                <div id="patata" class="gallery-item">
+
+                </div>
             </div>
-            <div id="imagenes">
-                <img src="/getImgCarros?id=1"
-            </div>
-        </body>
-        
+            <script src="Layout.js"></script>
     </body>
 </html>

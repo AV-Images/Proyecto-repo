@@ -140,9 +140,19 @@ server.post('/upload', upload.single('imagenes'),(req, res) => {
 });
 
 server.post('/longCarr',(req,res)=>{
-    db.query('select count(id_image) as largo from imagenes',(err,data)=>{
-        res.send(data);
-    })
+    const tabla=req.body.tabla
+    //console.log(tabla)
+    if(tabla==1){
+        db.query('select count(id_image) as largo from imagenes_Carros',(err,data)=>{
+            console.log(data)
+            return res.send(data);
+        })
+    }
+    if(tabla==2){
+        db.query('select count(id_image) as largo from imagenes_Casual',(err,data)=>{
+            return res.send(data);
+        })
+    }  
 })
 
 server.get("/getImgCarros",(req,res)=>{
