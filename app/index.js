@@ -1,13 +1,14 @@
 import express from 'express';
 import mysql from 'mysql2';
 import bodyParser from 'body-parser';
+import multer from 'multer';
 const server=express();
 
 import path from 'path';
 import {fileURLToPath} from 'url';
 const _dirname = path.dirname(fileURLToPath(import.meta.url));
 
-server.set("port",3500);
+server.set("port",3501);
 server.listen(server.get("port"));
 server.use(bodyParser.json());
 
@@ -32,6 +33,7 @@ server.get("/sIn",(req,res)=>res.sendFile(_dirname+"/Login/Login.html"))
 server.get("/sUp",(req,res)=>res.sendFile(_dirname+"/Registrarse/Registro.html"))
 server.get("/us",(req,res)=>res.sendFile(_dirname+"/Usuarios-pag/users.html"))
 server.get("/me",(req,res)=>res.sendFile(_dirname+"/Layout/Pantalla-1 copy.html"))
+
 
 db.connect(err => {
     if (err) {
@@ -98,3 +100,27 @@ server.post('/login', (req, res)=>{
         res.send({status:"ok",message:"Usuario loggeado",redirect:"/"})
     });
 })
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '/images');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage: storage });
+
+server.post('/upload', upload.array('images', 12), (req, res) => {
+    try {
+        res.send('Archivos subidos exitosamente');
+    } catch (error) {
+        console.error(error);
+        res.send('Error al subir archivos');
+    }
+});
+
+function addtoDatabase(file){
+    console.log(file.originalname)
+}
