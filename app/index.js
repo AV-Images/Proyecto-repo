@@ -2,6 +2,7 @@ import express from 'express';
 import mysql from 'mysql2';
 import bodyParser from 'body-parser';
 import multer from 'multer';
+
 const server=express();
 
 import path from 'path';
@@ -13,7 +14,7 @@ server.listen(server.get("port"));
 server.use(bodyParser.json());
 
 // Configuración de la base de datos
-const db = mysql.createConnection({
+export const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root',
@@ -101,18 +102,8 @@ server.post('/login', (req, res)=>{
     });
 })
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, '/images');
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
-});
-
-const upload = multer({ storage: storage });
-
-server.post('/upload', upload.array('images', 12), (req, res) => {
+server.post('/upload', (req, res) => {
+    console.log(req);
     try {
         res.send('Archivos subidos exitosamente');
     } catch (error) {
@@ -120,7 +111,3 @@ server.post('/upload', upload.array('images', 12), (req, res) => {
         res.send('Error al subir archivos');
     }
 });
-
-function addtoDatabase(file){
-    console.log(file.originalname)
-}
