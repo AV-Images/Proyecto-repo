@@ -1,8 +1,3 @@
-document.getElementById('imgForm').addEventListener('submit',(e)=>{
-    e.preventDefault();
-    console.log(e);
-})
-
 document.getElementById('images').addEventListener('change', function(event) {
     const imagePreview = document.getElementById('imagePreview');
     imagePreview.innerHTML = ''; // Limpiar las vistas previas anteriores

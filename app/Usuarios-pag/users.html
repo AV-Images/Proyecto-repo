@@ -41,9 +41,10 @@
         </div>
 
         <div class="Botoncito">
-            <form id="imgForm">
-                <input type="file" id="fileInput" accept="image/*" />
-                <button id="Sub">Subir</button>
+            <form id="imgForm" method="post" action="/upload" enctype="multipart/form-data">
+                <input type="file" id="fileInput" name="imagenes"/>
+                <input type="text" id="galeria" name="galeria">
+                <button id="Sub" type="submit">Subir</button><br>
             </form>
             <br><br>
             <img id="imagePreview" src="" alt="Vista previa de la imagen" />

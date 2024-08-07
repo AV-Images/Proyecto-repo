@@ -102,12 +102,35 @@ server.post('/login', (req, res)=>{
     });
 })
 
-server.post('/upload', (req, res) => {
-    console.log(req);
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+server.post('/upload', upload.single('imagenes'),(req, res) => {
     try {
-        res.send('Archivos subidos exitosamente');
+        const nombre=req.file.originalname;
+        const tipo=req.file.mimetype;
+        const img=req.file.buffer;
+        const gal=req.body.galeria;
+        const insert="insert into imagenes(nombre, tipo_dato, galeria, datos) values (?,?,?,?)";
+        db.query(insert,[nombre,tipo,gal,img], (err,data)=>{
+            if(err){
+                return res.send({status:'400',message:'No se pudo insertar la imagen'})
+            }else{
+                console.log('Archivos subidos exitosamente');
+            }
+        })
     } catch (error) {
         console.error(error);
-        res.send('Error al subir archivos');
+        res.send({message:'Error al subir la imagen',redirect:"/us"});
     }
 });
+
+server.post("/getImgCarros",(req,res)=>{
+    //console.log('xd')
+    db.query('select * from imagenes where galeria=1',(err,data)=>{
+        //console.log(data);
+        console.log('negros')
+        res.setHeader('Content-Type',data[0].tipo_dato);
+        res.send(data[0].datos)
+    })
+})

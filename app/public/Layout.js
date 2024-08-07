@@ -1,12 +1,15 @@
-window.onload = function() {
-    var elem = document.querySelector('.gallery');
-    var msnry = new Masonry(elem, {
-        // Opciones
-        itemSelector: '.gallery-item',
-        columnWidth: '.gallery-item',
-        percentPosition: true
-    });
-};
+document.addEventListener('DOMContentLoaded',async ()=>{
+    const imagenes=await fetch('http://localhost:3501/getImgCarros',{
+        method:"POST"
+    })
+    console.log('pum')
+    console.log(imagenes)
+    const divImg=document.getElementById('imagenes')
+    //console.log(imagenes[0]);
+    const img=document.createElement('img')
+    //img.src=imagenes[0].datos;
+    divImg.appendChild(img);
+})
 
 function addToFavorites(imageSrc) {
     console.log(imageSrc);
