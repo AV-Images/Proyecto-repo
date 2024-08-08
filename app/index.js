@@ -229,3 +229,19 @@ server.post('/getFavorites',(req,res)=>{
         }
     })
 })
+
+server.post('/getUser',(req,res)=>{
+    const cookie=req.body.cookie;
+    const deco=jsonwebtoken.verify(cookie,process.env.JWT_SECRET);
+    db.query('select * from Usuario',(err,data)=>{
+        const usuarioRevisar=data.find(usuario=>usuario.email_usuario===deco.email);
+        //console.log(usuarioRevisar)
+        if(usuarioRevisar){
+            return res.send(usuarioRevisar);
+        }else{
+            return console.log('error')
+        }
+    })
+})
+
+server.get

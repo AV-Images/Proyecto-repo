@@ -1,15 +1,15 @@
-document.getElementById('images').addEventListener('change', function(event) {
-    const imagePreview = document.getElementById('imagePreview');
-    imagePreview.innerHTML = ''; // Limpiar las vistas previas anteriores
-    const files = event.target.files;
-
-    Array.from(files).forEach(file => {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            imagePreview.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-    });
-});
+document.addEventListener('DOMContentLoaded',async (req,res)=>{
+    const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
+    const us=await fetch('http://localhost:3500/getUser',{
+        method:"POST",
+        headers:{
+            "Content-Type" : "application/json"
+        },
+        body:JSON.stringify({
+            cookie: cookieJWT
+        })
+    })
+    const user=await us.json();
+    const id=user.id_usuario;
+    
+})
