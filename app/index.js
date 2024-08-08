@@ -2,6 +2,7 @@ import express from 'express';
 import mysql from 'mysql2';
 import bodyParser from 'body-parser';
 import multer from 'multer';
+import cors from 'cors'
 
 const server=express();
 
@@ -9,7 +10,7 @@ import path from 'path';
 import {fileURLToPath} from 'url';
 const _dirname = path.dirname(fileURLToPath(import.meta.url));
 
-server.set("port",3501);
+server.set("port",3500);
 server.listen(server.get("port"));
 server.use(bodyParser.json());
 
@@ -24,6 +25,7 @@ export const db = mysql.createConnection({
 //Configuracion del server
 server.use(express.static(_dirname+"/public"))
 server.use(express.static(_dirname+"/images"))
+server.use(cors());
 
 //Rutas
 server.get("/",(req,res)=>res.sendFile(_dirname+"/Hompage/Index.html"))
@@ -144,7 +146,7 @@ server.post('/longCarr',(req,res)=>{
     //console.log(tabla)
     if(tabla==1){
         db.query('select count(id_image) as largo from imagenes_Carros',(err,data)=>{
-            console.log(data)
+            //console.log(data)
             return res.send(data);
         })
     }
@@ -159,9 +161,71 @@ server.get("/getImgCarros",(req,res)=>{
     const id=req.query.id
     console.log(req.query.id)
     db.query('select * from imagenes_Carros where id_image='+id,(err,data)=>{
-        console.log(err);
-        console.log('negros')
+        if(err){
+            console.log('No encontro nada o no se pudfo');
+            return res.status(400).send('No se pudo')
+        }
+        if(data.length>0){
+            console.log('negros')
+            res.setHeader('Content-Type',data[0].tipo_dato);
+            res.send(data[0].datos)
+        }else{
+            res.send('No hay imagenes')
+        }
+    })
+})
+
+server.get("/getImgCasual",(req,res)=>{
+    const id=req.query.id
+    db.query('select * from imagenes_Casual where id_image='+id,(err,data)=>{
         res.setHeader('Content-Type',data[0].tipo_dato);
         res.send(data[0].datos)
+    })
+})
+
+server.post('/addFav',(req,res)=>{
+    const src=req.body.src;
+    //console.log(req.body.src);
+    const cookie=req.body.cookie;
+    const deco=jsonwebtoken.verify(cookie,process.env.JWT_SECRET);
+    let usuarioRevisar;
+    db.query('select * from Usuario',(err,data)=>{
+        usuarioRevisar=data.find(usuario=>usuario.email_usuario===deco.email);
+        if(usuarioRevisar){
+            //console.log(usuarioRevisar)
+            const insert='insert into favoritos(fk_usuario, fk_imagen) values(?,?)'
+            db.query(insert,[usuarioRevisar.id_usuario,src],(err,data)=>{
+                if(err){
+                    return console.log('No se pudo insertar',err)
+                }else{
+                    return res.status(200).redirect('/fav');
+                }
+            })
+        }else{
+            console.log('error')
+        }
+    })
+})
+
+server.post('/getFavorites',(req,res)=>{
+    const cookie=req.body.cookie;
+    //console.log(cookie)
+    const deco=jsonwebtoken.verify(cookie,process.env.JWT_SECRET);
+    //console.log(deco)
+    let usuarioRevisar;
+    db.query('select * from Usuario',(err,data)=>{
+        usuarioRevisar=data.find(usuario=>usuario.email_usuario===deco.email);
+        if(usuarioRevisar){
+            db.query('select * from favoritos where fk_usuario='+usuarioRevisar.id_usuario,(error,datos)=>{
+                if(error){
+                    return res.status(400).send(error);
+                }else{
+                    //console.log(datos);
+                    return res.status(200).send(datos);
+                }
+            })
+        }else{
+            return res.send('No se consulto')
+        }
     })
 })

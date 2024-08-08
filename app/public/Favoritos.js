@@ -1,33 +1,40 @@
-        // Cargar las imágenes favoritas desde el almacenamiento local
-        window.onload = function() {
-            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-            let gallery = document.getElementById('favorites-gallery');
+document.addEventListener('DOMContentLoaded',async ()=>{
+    const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
+    const best=await fetch('/getFavorites',{
+        method:"POST",
+        headers:{
+            "Content-Type" : "application/json"
+        },
+        body:JSON.stringify({
+            cookie: cookieJWT
+        })
+    })
+    const fav=await best.json();
+    console.log(fav);
+    const Cont_Img=document.getElementById('favorites-gallery');
+    if(!fav || fav.length===0){
+        Cont_Img.innerHTML = '<p>No tienes imágenes favoritas.</p>';
+    }else{
+        let i=0;
+        do {
+            const div_img=document.createElement('div');
+            div_img.className='gallery-item';
 
-            if (favorites.length === 0) {
-                gallery.innerHTML = '<p>No tienes imágenes favoritas.</p>';
-            } else {
-                favorites.forEach(src => {
-                    let div = document.createElement('div');
-                    div.className = 'gallery-item';
-                    let img = document.createElement('img');
-                    img.src = src;
-                    let button = document.createElement('button');
-                    button.className = 'remove-button';
-                    button.innerText = 'Quitar de Favoritos';
-                    button.onclick = function() { removeFromFavorites(src); };
-                    div.appendChild(img);
-                    div.appendChild(button);
-                    gallery.appendChild(div);
-                });
+            const img=document.createElement('img')
+            img.src=fav[i].fk_imagen;
 
-                // Iniciar Masonry después de cargar las imágenes
-                //var msnry = new Masonry(gallery, {
-                //    itemSelector: '.gallery-item',
-                //    columnWidth: '.gallery-item',
-                //    percentPosition: true
-                //});
-            }
-        };
+            const boton=document.createElement('button');
+            boton.className='favorite-button';
+            boton.innerHTML='Eliminar de favoritos'
+            //boton.onclick=()=>removeFavorites()
+
+            div_img.appendChild(img);
+            div_img.appendChild(boton);
+            Cont_Img.appendChild(div_img);
+            i++
+        } while (i<fav.length);
+    }
+})
 
         // Función para eliminar una imagen de los favoritos
         function removeFromFavorites(imageSrc) {
