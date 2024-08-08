@@ -18,7 +18,7 @@ server.use(bodyParser.json());
 export const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'Alonso.12vz',
     database: 'Av_image'
 });
 
