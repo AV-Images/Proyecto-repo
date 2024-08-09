@@ -18,7 +18,7 @@ server.use(bodyParser.json());
 export const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Alonso.12vz',
+    password: 'root',
     database: 'Av_image'
 });
 
@@ -243,5 +243,3 @@ server.post('/getUser',(req,res)=>{
         }
     })
 })
-
-server.get
