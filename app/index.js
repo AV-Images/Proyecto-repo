@@ -36,7 +36,7 @@ server.get("/sIn",(req,res)=>res.sendFile(_dirname+"/Login/Login.html"))
 server.get("/sUp",(req,res)=>res.sendFile(_dirname+"/Registrarse/Registro.html"))
 server.get("/us",(req,res)=>res.sendFile(_dirname+"/Usuarios-pag/users.html"))
 server.get("/me",(req,res)=>res.sendFile(_dirname+"/Layout/Pantalla-1 copy.html"))
-
+server.get("/reg",(req,res)=>res.sendFile(_dirname+"/Registrarse/Registro.html"))
 
 db.connect(err => {
     if (err) {
