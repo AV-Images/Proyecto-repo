@@ -267,7 +267,7 @@ p{
 }
 
 /* Estilo para laptops */
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 500px) and (max-width: 1199px) {
     .content.header {
         font-size: 1.3rem;
     }
