@@ -257,7 +257,89 @@ video#myVideo {
     opacity: 1; /* Muestra el botón al pasar el cursor sobre la imagen */
   }
 
-  .Botoncito{
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
     display: flex;
     justify-content: center;
-  }
+    align-items: center;
+    flex-direction: column;
+}
+
+.Teniscontenedor {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.Teniscontenedor h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.Teniscontenedor p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.Botoncito {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+}
+
+.Botoncito form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#fileInput, #galeria {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+#Sub {
+    background-color: burlywood;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#Sub:hover {
+    background-color: #555;
+}
+
+#imagePreview {
+    margin-top: 20px;
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.bi-cloud-download {
+    margin-top: 20px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.bi-cloud-download:hover {
+    color: #333;
+}

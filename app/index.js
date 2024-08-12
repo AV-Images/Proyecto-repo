@@ -29,6 +29,7 @@ server.use(cors());
 
 //Rutas
 server.get("/",(req,res)=>res.sendFile(_dirname+"/Hompage/Index.html"))
+server.get("/cop",(req,res)=>res.sendFile(_dirname+"/Hompage/Index copy.html"))
 server.get("/gal",(req,res)=>res.sendFile(_dirname+"/Layout/Pantalla-1.html"))
 server.get("/casual",(req,res)=>res.sendFile(_dirname+"/Casualpantalla/Casual.html"))
 server.get("/fav",(req,res)=>res.sendFile(_dirname+"/Favoritos/Fav.html"))
@@ -37,6 +38,7 @@ server.get("/sUp",(req,res)=>res.sendFile(_dirname+"/Registrarse/Registro.html")
 server.get("/us",(req,res)=>res.sendFile(_dirname+"/Usuarios-pag/users.html"))
 server.get("/me",(req,res)=>res.sendFile(_dirname+"/Layout/Pantalla-1 copy.html"))
 server.get("/reg",(req,res)=>res.sendFile(_dirname+"/Registrarse/Registro.html"))
+server.get("/copyindex",(req,res)=>res.sendFile(_dirname+"/Hompage/Index copy.html"))
 
 db.connect(err => {
     if (err) {
