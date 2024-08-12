@@ -266,13 +266,45 @@ p{
     }
 }
 
-/* Estilo para laptops */
-@media (min-width: 500px) and (max-width: 1199px) {
+/* Estilo para laptops grandes (15-17 pulgadas) */
+@media (min-width: 1200px) and (max-width: 1440px) {
+    .content.header {
+        font-size: 1.5rem;
+    }
+    .box-container .distrito {
+        width: 30%;
+    }
+    .navbar a {
+        font-size: 1.2rem;
+        padding: 1.5vw;
+    }
+}
+
+/* Estilo para laptops medianas (13-15 pulgadas) */
+@media (min-width: 1024px) and (max-width: 1199px) {
     .content.header {
         font-size: 1.3rem;
     }
     .box-container .distrito {
+        width: 35%;
+    }
+    .navbar a {
+        font-size: 1.1rem;
+        padding: 1.5vw;
+    }
+}
+
+/* Estilo para laptops pequeñas (11-13 pulgadas) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .content.header {
+        font-size: 1.2rem;
+    }
+    .box-container .distrito {
         width: 45%;
+    }
+    .navbar a {
+        font-size: 1rem;
+        padding: 1.5vw;
     }
 }
 
