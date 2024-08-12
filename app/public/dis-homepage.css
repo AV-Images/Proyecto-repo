@@ -251,3 +251,49 @@ p{
 .Login-buttonn:active {
     background-color: #555; /* Color de fondo al hacer clic */
 }
+
+
+/* Estilo para pantallas grandes (monitores) */
+@media (min-width: 1200px) {
+    .content.header {
+        font-size: 1.5em;
+    }
+    .box-container .distrito {
+        width: 30%;
+    }
+}
+
+/* Estilo para laptops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .content.header {
+        font-size: 1.3em;
+    }
+    .box-container .distrito {
+        width: 45%;
+    }
+}
+
+/* Estilo para tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+    .content.header {
+        font-size: 1.2em;
+    }
+    .box-container .distrito {
+        width: 60%;
+    }
+}
+
+/* Estilo para celulares */
+@media (max-width: 767px) {
+    .navbar a {
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+    .content.header {
+        font-size: 1em;
+    }
+    .box-container .distrito {
+        width: 100%;
+    }
+}
