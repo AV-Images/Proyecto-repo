@@ -200,15 +200,15 @@ video#myVideo {
 .gallery-item {
     position: relative;
     display: inline-block;
-  }
+}
   
-  .background-image {
+.background-image {
     display: block;
     width: 100%;
     height: auto;
-  }
+}
   
-  .favorite-button, .download-button {
+.favorite-button, .download-button {
     position: absolute;
     bottom: 10px; /* Ajusta la posición del botón según tu preferencia */
     right: 180px;  /* Ajusta la posición del botón según tu preferencia */
@@ -221,15 +221,15 @@ video#myVideo {
     opacity: 0; /* Oculta el botón inicialmente */
     transition: opacity 0.3s ease; /* Transición suave para la aparición */
     z-index: 1; /* Asegúrate de que el botón esté sobre la imagen */
-  }
+}
 
-  .favorite-button {
+.favorite-button {
     bottom: 10px;
     right: 10px;
     background-color: transparent /* Color del botón de favoritos */
-  }
+}
 
-  .download-button {
+.download-button {
     top: 10px;
     left: 10px;
     background-color: rgb(164, 174, 202);
@@ -246,13 +246,13 @@ video#myVideo {
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1;
-  }
+}
   
-  .gallery-item:hover .favorite-button,
-  .gallery-item:hover .download-button {
+.gallery-item:hover .favorite-button,
+.gallery-item:hover .download-button {
     opacity: 1; /* Muestra los botones al pasar el cursor sobre la imagen */
-  }
+}
   
-  .gallery-item:hover .favorite-button {
+.gallery-item:hover .favorite-button {
     opacity: 1; /* Muestra el botón al pasar el cursor sobre la imagen */
-  }
+}

@@ -1,12 +1,14 @@
 /* Estilos globales para el cuerpo */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #FAF0E6; /* Color de fondo */
+    background-color: #f0f0f0; /* Color de fondo para mejor visibilidad */
 }
 
 /* Estilos para el encabezado */
@@ -21,7 +23,7 @@ header {
     width: calc(100% - 40px); /* Ajustar el ancho para tener en cuenta los márgenes */
     position: relative;
     width: 98%;
-    height: 150px; /* Ajusta la altura según sea necesario */
+    height: 300px; /* Ajusta la altura según sea necesario */
     overflow: hidden;
 }
 
@@ -200,15 +202,15 @@ video#myVideo {
 .gallery-item {
     position: relative;
     display: inline-block;
-  }
+}
   
-  .background-image {
+.background-image {
     display: block;
     width: 100%;
     height: auto;
-  }
+}
   
-  .favorite-button, .download-button {
+.favorite-button, .download-button {
     position: absolute;
     bottom: 10px; /* Ajusta la posición del botón según tu preferencia */
     right: 180px;  /* Ajusta la posición del botón según tu preferencia */
@@ -221,18 +223,18 @@ video#myVideo {
     opacity: 0; /* Oculta el botón inicialmente */
     transition: opacity 0.3s ease; /* Transición suave para la aparición */
     z-index: 1; /* Asegúrate de que el botón esté sobre la imagen */
-  }
+}
 
-  .favorite-button {
+.favorite-button {
     bottom: 10px;
     right: 10px;
-    background-color: #FFD700; /* Color del botón de favoritos */
-  }
+    background-color: transparent /* Color del botón de favoritos */
+}
 
-  .download-button {
+.download-button {
     top: 10px;
     left: 10px;
-    background-color: #4CAF50;
+    background-color: rgb(164, 174, 202);
     color: white;
     border: none;
     border-radius: 5px;
@@ -246,26 +248,15 @@ video#myVideo {
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1;
-  }
+}
   
-  .gallery-item:hover .favorite-button,
-  .gallery-item:hover .download-button {
+.gallery-item:hover .favorite-button,
+.gallery-item:hover .download-button {
     opacity: 1; /* Muestra los botones al pasar el cursor sobre la imagen */
-  }
+}
   
-  .gallery-item:hover .favorite-button {
+.gallery-item:hover .favorite-button {
     opacity: 1; /* Muestra el botón al pasar el cursor sobre la imagen */
-  }
-
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 
 .Teniscontenedor {
@@ -297,12 +288,15 @@ video#myVideo {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400px;
+    margin: 0 auto; /* Centra el contenedor */
+    position: relative; /* Para el posicionamiento del dropdown */
 }
 
 .Botoncito form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 15px; /* Espacio entre los elementos del formulario */
 }
 
 #fileInput, #galeria {
@@ -342,4 +336,54 @@ video#myVideo {
 
 .bi-cloud-download:hover {
     color: #333;
+}
+
+/* Estilo para el botón del menú desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    background-color: burlywood;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown-toggle:hover {
+    background-color: #555;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 5px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }

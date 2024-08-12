@@ -226,7 +226,7 @@ video#myVideo {
   .favorite-button {
     bottom: 10px;
     right: 10px;
-    background-color: #FFD700; /* Color del botón de favoritos */
+    background-color: transparent /* Color del botón de favoritos */
   }
 
   .download-button {
