@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     const fav=await best.json();
     console.log(fav);
     const Cont_Img=document.getElementById('favorites-gallery');
-    if(!fav || fav.length===0){
+    if(fav.length===0){
         Cont_Img.innerHTML = '<p>No tienes imágenes favoritas.</p>';
     }else{
         let i=0;

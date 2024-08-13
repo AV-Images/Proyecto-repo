@@ -147,7 +147,6 @@ server.post('/longCarr',(req,res)=>{
     //console.log(tabla)
     if(tabla==1){
         db.query('select count(id_image) as largo from imagenes_Carros',(err,data)=>{
-            //console.log(data)
             return res.send(data);
         })
     }
@@ -163,11 +162,11 @@ server.get("/getImgCarros",(req,res)=>{
     console.log(req.query.id)
     db.query('select * from imagenes_Carros where id_image='+id,(err,data)=>{
         if(err){
-            console.log('No encontro nada o no se pudfo');
+            console.log('No encontro nada o no se pudo');
             return res.status(400).send('No se pudo')
         }
         if(data.length>0){
-            console.log('negros')
+            //console.log('negros')
             res.setHeader('Content-Type',data[0].tipo_dato);
             res.send(data[0].datos)
         }else{
