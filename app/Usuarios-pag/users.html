@@ -46,13 +46,13 @@
         
                 <!-- Menú desplegable con botón de selección -->
                 <div class="dropdown">
-                    <button id="dropdownMenuButton" class="dropdown-toggle" type="button">
-                        Seleccionar Galería
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#" onclick="setGallery('casual')">Galery Casual</a>
-                        <a href="#" onclick="setGallery('carros')">Galery Carros</a>
-                    </div>
+                    <label for="galeria">
+                        <p>Seleccionar Galería</p>
+                            <select title="Seleccionar Galería" name="galeria" id="galeria" >
+                                <option value="1">Galería de Carros</option>
+                                <option value="2">Galería Casual</option>
+                            </select>
+                    </label>
                 </div>
                 <input type="hidden" id="galeria" name="galeria">
         

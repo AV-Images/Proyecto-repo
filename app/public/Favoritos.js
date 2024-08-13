@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
             const boton=document.createElement('button');
             boton.className='favorite-button';
             boton.innerHTML='Eliminar de favoritos'
-            //boton.onclick=()=>removeFavorites()
+            boton.onclick=()=>removeFavorites(img.src)
 
             div_img.appendChild(img);
             div_img.appendChild(boton);
@@ -36,11 +36,32 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     }
 })
 
-        // Función para eliminar una imagen de los favoritos
-        function removeFromFavorites(imageSrc) {
-            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-            favorites = favorites.filter(src => src !== imageSrc);
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            alert('Imagen eliminada de favoritos');
-            location.reload(); // Recargar la página para actualizar la lista de favoritos
-        }
+// Función para eliminar una imagen de los favoritos
+async function removeFavorites(imageSrc){
+    const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
+    const res=await fetch('/getUser',{
+        method:"POST",
+        headers:{
+            "Content-Type" : "application/json"
+        },
+        body:JSON.stringify({
+            cookie: cookieJWT
+        })
+    })
+    const resJson=await res.json();
+    console.log(resJson);
+    const ans=await fetch('delFav',{
+        method:"POST",
+        headers:{
+            "Content-Type" : "application/json"
+        },
+        body:JSON.stringify({
+            id: resJson.id_usuario,
+            img: imageSrc.slice(21)
+        })
+    })
+    const answer= await ans.json();
+    if(answer.redirect){
+        window.location.href=answer.redirect;
+    }
+}

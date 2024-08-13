@@ -18,7 +18,7 @@ server.use(bodyParser.json());
 export const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Alonso.12vz',
+    password: 'root',
     database: 'Av_image'
 });
 
@@ -38,7 +38,6 @@ server.get("/sUp",(req,res)=>res.sendFile(_dirname+"/Registrarse/Registro.html")
 server.get("/us",(req,res)=>res.sendFile(_dirname+"/Usuarios-pag/users.html"))
 server.get("/me",(req,res)=>res.sendFile(_dirname+"/Layout/Pantalla-1 copy.html"))
 server.get("/reg",(req,res)=>res.sendFile(_dirname+"/Registrarse/Registro.html"))
-server.get("/copyindex",(req,res)=>res.sendFile(_dirname+"/Hompage/Index copy.html"))
 
 db.connect(err => {
     if (err) {
@@ -102,7 +101,7 @@ server.post('/login', (req, res)=>{
         }
         console.log("login exitoso")
         res.cookie("jwt",token,cookieOption);
-        res.send({status:"ok",message:"Usuario loggeado",redirect:"/"})
+        res.send({status:"ok",message:"Usuario loggeado",redirect:"/us"})
     });
 })
 
@@ -114,7 +113,7 @@ server.post('/upload', upload.single('imagenes'),(req, res) => {
         const nombre=req.file.originalname;
         const tipo=req.file.mimetype;
         const img=req.file.buffer;
-        const gal=req.body.galeria;
+        const gal=req.body.galeria[0];
         if(gal==1){
             const insert="insert into imagenes_Carros(nombre, tipo_dato, datos) values (?,?,?)";
             db.query(insert,[nombre,tipo,img], (err,data)=>{
@@ -246,4 +245,53 @@ server.post('/getUser',(req,res)=>{
     })
 })
 
-server.get
+server.get('/downloadCarros',(req,res)=>{
+    const srcImg=req.query.name;
+    const idImg=srcImg.substring(17);
+    //console.log(idImg);
+    db.query('select * from imagenes_Carros where id_image='+idImg,(err,data)=>{
+        if(err){
+            console.log('Error en query');
+            res.status(500).send('Error en el querry');
+        }else if(data.length>0){
+            const img=data[0];+
+            res.setHeader('Content-Type', img.tipo_dato)
+            res.setHeader('Content-Disposition','attachment; filename='+img.nombre);
+            res.send(img.datos);         
+        }else{
+            res.status(404).send('Imagen no encontrada')
+        }
+    })
+})
+
+server.get('/downloadCasual',(req,res)=>{
+    const srcImg=req.query.name;
+    const idImg=srcImg.substring(17);
+    //console.log(idImg);
+    db.query('select * from imagenes_Casual where id_image='+idImg,(err,data)=>{
+        if(err){
+            console.log('Error en query');
+            res.status(500).send('Error en el querry');
+        }else if(data.length>0){
+            const img=data[0];+
+            res.setHeader('Content-Type', img.tipo_dato)
+            res.setHeader('Content-Disposition','attachment; filename='+img.nombre);
+            res.send(img.datos);         
+        }else{
+            res.status(404).send('Imagen no encontrada')
+        }
+    })
+})
+
+server.post('/delFav',(req,res)=>{
+    const idUsr=req.body.id;
+    const src=req.body.img;
+    db.query('delete from favoritos where fk_usuario='+idUsr+' AND fk_imagen="'+src+'";',(err,data)=>{
+        if(err){
+            console.log(err);
+            return res.status(400).send(err);
+        }else{
+            return res.status(200).send({message:'Se borro bien',redirect:'/fav'})
+        }
+    })
+})

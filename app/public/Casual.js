@@ -33,8 +33,14 @@ document.addEventListener('DOMContentLoaded',async ()=>{
         console.log(ruta.slice(21));
         boton.onclick=()=>addToFavorites(ruta.slice(21))
 
+        const a=document.createElement('a');
+        a.href='/downloadCasual?name='+ruta.slice(21);
+        a.className='download-button';
+        a.innerHTML='Descargar'
+
         div_img.appendChild(img);
         div_img.appendChild(boton);
+        div_img.appendChild(a)
         Cont_Img.appendChild(div_img);
         i++
     }while(i<le)
