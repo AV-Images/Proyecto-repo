@@ -28,8 +28,15 @@ document.addEventListener('DOMContentLoaded',async ()=>{
             boton.innerHTML='Eliminar de favoritos'
             boton.onclick=()=>removeFavorites(img.src)
 
+            const ruta=img.src;
+            const a=document.createElement('a');
+            a.href='/downloadCarros?name='+ruta.slice(21);
+            a.className='download-button';
+            a.innerHTML='Descargar'
+
             div_img.appendChild(img);
             div_img.appendChild(boton);
+            div_img.appendChild(a);
             Cont_Img.appendChild(div_img);
             i++
         } while (i<fav.length);
