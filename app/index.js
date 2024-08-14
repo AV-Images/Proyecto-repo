@@ -18,7 +18,7 @@ server.use(bodyParser.json());
 export const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'Alonso.12vz',
     database: 'Av_image'
 });
 
@@ -30,6 +30,8 @@ server.use(cors());
 //Rutas
 server.get("/",(req,res)=>res.sendFile(_dirname+"/Hompage/Index.html"))
 server.get("/cop",(req,res)=>res.sendFile(_dirname+"/Hompage/Index copy.html"))
+server.get("/copingles",(req,res)=>res.sendFile(_dirname+"/Hompage/Index inglesuser.html"))
+server.get("/copinglesnotuser",(req,res)=>res.sendFile(_dirname+"/Hompage/Index notuser.html"))
 server.get("/gal",(req,res)=>res.sendFile(_dirname+"/Layout/Pantalla-1.html"))
 server.get("/casual",(req,res)=>res.sendFile(_dirname+"/Casualpantalla/Casual.html"))
 server.get("/fav",(req,res)=>res.sendFile(_dirname+"/Favoritos/Fav.html"))
