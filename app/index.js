@@ -15,11 +15,20 @@ server.listen(server.get("port"));
 server.use(bodyParser.json());
 
 // Configuración de la base de datos
-export const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'Av_image'
+//import db from "mysql2";
+export const db=mysql.createPool({
+host: process.env.HOST,
+user: process.env.USER,          // Remplazar con tu nombre de usuario
+password: process.env.PASSWORD,  // Remplazar con tu contraseña
+database: process.env.DATABASE,
+port: 3306,
+waitForConnections: true,
+connectionLimit: 10,
+maxIdle: 10,
+idleTimeout: 60000,
+queueLimit: 0,
+enableKeepAlive: true,
+keepAliveInitialDelay: 500,
 });
 
 //Configuracion del server
