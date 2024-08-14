@@ -12,4 +12,8 @@ document.getElementById('userForm').addEventListener('submit', async (e)=>{
             name: e.target.Nombre.value
         })
     })
+    const resJson= await res.json();
+    if(resJson.redirect){
+        window.location.href=resJson.redirect;
+    }
 })
