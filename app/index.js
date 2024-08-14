@@ -256,8 +256,8 @@ server.post('/getUser',(req,res)=>{
 
 server.get('/downloadCarros',(req,res)=>{
     const srcImg=req.query.name;
-    const idImg=srcImg.substring(17);
-    //console.log(idImg);
+    const idImg=srcImg.substring(16);
+    console.log(idImg);
     db.query('select * from imagenes_Carros where id_image='+idImg,(err,data)=>{
         if(err){
             console.log('Error en query');
@@ -275,8 +275,8 @@ server.get('/downloadCarros',(req,res)=>{
 
 server.get('/downloadCasual',(req,res)=>{
     const srcImg=req.query.name;
-    const idImg=srcImg.substring(17);
-    //console.log(idImg);
+    const idImg=srcImg.substring(16);
+    console.log(idImg);
     db.query('select * from imagenes_Casual where id_image='+idImg,(err,data)=>{
         if(err){
             console.log('Error en query');
