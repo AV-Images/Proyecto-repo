@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded',async ()=>{
     const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
-    const best=await fetch('/getFavorites',{
+    const best=await fetch('https://proyecto-repo.onrender.com/getFavorites',{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"
