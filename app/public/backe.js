@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded',async (req,res)=>{
     const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
-    const us=await fetch('http://localhost:3500/getUser',{
+    const us=await fetch('https://proyecto-repo.onrender.com/getUser',{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"

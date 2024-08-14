@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',async ()=>{
-    const longitud=await fetch('http://localhost:3500/longCarr',{
+    const longitud=await fetch('https://proyecto-repo.onrender.com/longCarr',{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"

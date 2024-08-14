@@ -1,6 +1,6 @@
 document.getElementById('userForm').addEventListener('submit', async (e)=>{
     e.preventDefault();
-    const res=await fetch('http://localhost:3500/register',{
+    const res=await fetch('https://proyecto-repo.onrender.com/register',{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"
