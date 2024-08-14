@@ -232,7 +232,7 @@ video#myVideo {
   .download-button {
     top: 10px;
     left: 10px;
-    background-color: #4CAF50;
+    background-color: rgb(164, 174, 202);
     color: white;
     border: none;
     border-radius: 5px;
