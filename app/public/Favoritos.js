@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
 
             const ruta=img.src;
             const a=document.createElement('a');
-            a.href='/downloadCarros?name='+ruta.slice(21);
+            a.href='/downloadCarros?name='+ruta.slice(35);
             a.className='download-button';
             a.innerHTML='Descargar'
 
@@ -64,7 +64,7 @@ async function removeFavorites(imageSrc){
         },
         body:JSON.stringify({
             id: resJson.id_usuario,
-            img: imageSrc.slice(21)
+            img: imageSrc.slice(35)
         })
     })
     const answer= await ans.json();

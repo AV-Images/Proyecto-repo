@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded',async ()=>{
         boton.innerHTML='Añadir a favoritos'
         //console.log(i)
         const ruta=img.src;
-        console.log(ruta.slice(21));
-        boton.onclick=()=>addToFavorites(ruta.slice(21))
+        console.log(ruta.slice(35));
+        boton.onclick=()=>addToFavorites(ruta.slice(35))
 
         const a=document.createElement('a');
-        a.href='/downloadCarros?name='+ruta.slice(21);
+        a.href='/downloadCarros?name='+ruta.slice(35);
         a.className='download-button';
         a.innerHTML='Descargar'
 

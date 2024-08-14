@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     const res=await longitud.json();
     const le=res[0].largo
     console.log(le)
+    //http://localhost:3500
 
     //Meter las imagenes
     const Cont_Img=document.getElementById('gallery')
@@ -30,11 +31,11 @@ document.addEventListener('DOMContentLoaded',async ()=>{
         boton.className='favorite-button';
         boton.innerHTML='Añadir a favoritos'
         const ruta=img.src;
-        console.log(ruta.slice(21));
-        boton.onclick=()=>addToFavorites(ruta.slice(21))
+        console.log(ruta.slice(35));
+        boton.onclick=()=>addToFavorites(ruta.slice(35))
 
         const a=document.createElement('a');
-        a.href='/downloadCasual?name='+ruta.slice(21);
+        a.href='/downloadCasual?name='+ruta.slice(35);
         a.className='download-button';
         a.innerHTML='Descargar'
 
