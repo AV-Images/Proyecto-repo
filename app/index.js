@@ -49,13 +49,13 @@ server.get("/sUp",(req,res)=>res.sendFile(_dirname+"/Registrarse/Registro.html")
 server.get("/us",(req,res)=>res.sendFile(_dirname+"/Usuarios-pag/users.html"))
 server.get("/me",(req,res)=>res.sendFile(_dirname+"/Layout/Pantalla-1 copy.html"))
 
-db.connect(err => {
+/*db.connect(err => {
     if (err) {
         console.error('Error conectando a la base de datos:', err);
         return;
     }
     console.log('Conectado a la base de datos');
-});
+});*/
 
 //Metodos
 import bcryptjs from 'bcryptjs';
