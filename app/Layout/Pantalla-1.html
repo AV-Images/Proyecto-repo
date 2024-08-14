@@ -4,6 +4,7 @@
             <link rel="stylesheet" href="Layout.css">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>New-launches</title>
+            <script src="Layout.js"></script>
         </head>
         <body>
         <header>
@@ -43,9 +44,27 @@
         </div>
             <div class="gallery" id="gallery">
 
-                
-                <!-- Añadir más imágenes según sea necesario -->
+                <div class="gallery-item">
+                    <img src="srt.png" alt="Descripción de la imagen 3">
+                    <button class="favorite-button" onclick="addToFavorites('maxime-renard-Li155fhUDP4-unsplash.jpg')">Add to favorites</button>
+                </div>
+                <div class="gallery-item">
+                    <img src="gt500mustang.png">
+                    <button class="favorite-button" onclick="addToFavorites('maxime-renard-Li155fhUDP4-unsplash.jpg')">Add to favorites</button>
+                </div>
+                <div class="gallery-item">
+                    <img src="r8d1.png">
+                    <button class="favorite-button" onclick="addToFavorites('maxime-renard-Li155fhUDP4-unsplash.jpg')">Add to favorites</button>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="rinlambo.jpg" alt="Descripción de la imagen 2">
+                    <button class="favorite-button" onclick="addToFavorites('rinlambo.jpg')">Agregar a Favoritos</button>
+                    <a href="rinlambo.jpg" download="nombre-imagen.jpg" class="download-button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                      </svg></a>
+                </div>
+
             </div>
-            <script src="Layout.js"></script>
     </body>
 </html>
