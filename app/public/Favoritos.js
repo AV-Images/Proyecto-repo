@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
 // Función para eliminar una imagen de los favoritos
 async function removeFavorites(imageSrc){
     const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
-    const res=await fetch('/getUser',{
+    const res=await fetch('https://proyecto-repo.onrender.com/getUser',{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"
@@ -57,7 +57,7 @@ async function removeFavorites(imageSrc){
     })
     const resJson=await res.json();
     console.log(resJson);
-    const ans=await fetch('delFav',{
+    const ans=await fetch('https://proyecto-repo.onrender.com/delFav',{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"

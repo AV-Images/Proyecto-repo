@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
 async function addToFavorites(imageSrc) {
     const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
     console.log(cookieJWT);
-    const res= await fetch('/addFav',{
+    const res= await fetch('https://proyecto-repo.onrender.com/addFav',{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"
